@@ -16,27 +16,22 @@ public class AuthPage extends BasePage {
     @AndroidFindBy(id = "workspaceAddress")
     private MobileElement organizationNameField;
 
-    @AndroidFindBy(xpath = "//android.view.View[1]")
-//    /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View[1]
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text='alinatest']]")
     public MobileElement organizationName;
 
-    @AndroidFindBy(xpath = "//android.widget.EditText[1]")
-//    /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View[2]/android.widget.EditText[1]
+    @AndroidFindBy(xpath = "//android.widget.EditText[0]")
     public MobileElement emailField;
 
-    @AndroidFindBy(xpath = "//android.widget.EditText[2]")
-//    /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View[2]/android.widget.EditText[2]
+    @AndroidFindBy(xpath = "//android.widget.EditText[1]")
     public MobileElement passwordField;
 
-    @AndroidFindBy(xpath = "//android.widget.EditText[2]")
-//    /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View[2]/android.widget.Button
+    @AndroidFindBy(xpath = "//android.widget.Button[contains(@text='Log in']]")
     public MobileElement logInWebButton;
 
     @AndroidFindBy(id = "button_secondary")
     private MobileElement cancelSavePassword;
 
     @AndroidFindBy(xpath = "//android.widget.Button[2]")
-//    /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View[4]/android.widget.Button[2]
     public MobileElement acceptWebButton;
 
     @AndroidFindBy(id = "pageButton")
@@ -48,6 +43,7 @@ public class AuthPage extends BasePage {
     }
 
     public AuthPage typeEmailWeb(String email) {
+        waitForElementToBePresent(organizationName, "Can't find web page for authorization", 5);
         waitForElementAndSendKeys(emailField, email, 5);
         return this;
     }

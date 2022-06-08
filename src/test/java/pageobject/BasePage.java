@@ -42,7 +42,7 @@ public class BasePage {
         Wait wait = new FluentWait(driver)
                 .withTimeout(Duration.ofSeconds(timeoutInSeconds))
                 .pollingEvery(Duration.ofMillis(5))
-                .ignoring(NoSuchElementException.class, StaleElementReferenceException.class)
+                .ignoring(org.openqa.selenium.NoSuchElementException.class, StaleElementReferenceException.class)
                 .ignoring(TimeoutException.class)
                 .withMessage(errorMessage);
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -57,15 +57,4 @@ public class BasePage {
         element.sendKeys(value);
         return element;
     }
-//
-//    public WebElement waitForElementToBeClickable(WebElement element, long timeoutInSeconds) {
-//        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
-//        try {
-//            return wait.until(ExpectedConditions.elementToBeClickable(element));
-//        } catch (StaleElementReferenceException e) {
-//            return wait.until(ExpectedConditions.elementToBeClickable(element));
-//        }
-//    }
-
-
 }

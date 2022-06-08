@@ -3,7 +3,6 @@ package testcase;
 import com.oracle.tools.packager.Log;
 import driver.DriverConfig;
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.Capabilities;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -30,16 +29,8 @@ public class BaseTest {
         Log.info("Before suit: ");
         Log.info("*** Setting up the driver ***");
         driver = new DriverConfig().createInstance();
-        reinstallApp();
     }
 
     public void reinstallApp() { driver.resetApp(); }
 
-    public static String getInfo() {
-        Capabilities cap = driver.getCapabilities();
-        String browserName = cap.getBrowserName();
-        String platform = cap.getPlatform().toString();
-        String version = cap.getVersion();
-        return String.format("browser: %s v: %s platform: %s", browserName, version, platform);
-    }
 }

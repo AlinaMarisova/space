@@ -10,13 +10,16 @@ public class SchedulePage extends BasePage {
         super(driver);
     }
 
+    @AndroidFindBy(id = "dashboard")
+    private MobileElement profileBottomTab;
+
     @AndroidFindBy(id = "monthText")
     private MobileElement currentMonth;
 
     @AndroidFindBy(id = "todayText")
     private MobileElement todayButton;
 
-    @AndroidFindBy(id = "todayText")
+    @AndroidFindBy(id = "absencesTitle")
     private MobileElement titleOfAbsencesList;
 
     @AndroidFindBy(id = "calendarPlaceholder")
@@ -28,15 +31,36 @@ public class SchedulePage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"More options\"]")
     private MobileElement extraMenu;
 
-    @AndroidFindBy(xpath = "//android.widget.LinearLayout[contains(@resource-id,'content') and @text='Add Absence']]")
-//  /hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.LinearLayout[1]/android.widget.LinearLayout  resource-id com.jetbrains.space:id/content
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Add Absence']")
     public MobileElement addAbsence;
 
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[1]/android.widget.LinearLayout")
-//    /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[2]/android.widget.LinearLayout
-    public MobileElement absence;
-
-    @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.TextView")
-//  /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id,'summary') and @text='Vacation, Test']")
     public MobileElement titleOfAbsence;
+
+    public SchedulePage tapProfileBottomTab() {
+        profileBottomTab.click();
+        return this;
+    }
+
+    public SchedulePage tapProfile() {
+        userName.click();
+        return this;
+    }
+
+    public SchedulePage tapExtraMenu() {
+        extraMenu.click();
+        return this;
+    }
+
+    public SchedulePage tapAddAbsence() {
+        addAbsence.click();
+        return this;
+    }
+
+    public SchedulePage checkNewAbsenceTitle() {
+        waitForElementToBePresent(titleOfAbsence, "No new absence", 5);
+        titleOfAbsence.isDisplayed();
+        return this;
+    }
+
 }

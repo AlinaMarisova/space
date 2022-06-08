@@ -19,9 +19,10 @@ public class DriverConfig {
         try {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("platformName", "android");
-            capabilities.setCapability("deviceName", "Test");
-            capabilities.setCapability("appPackage", "com.jetbrains.space");
-//            capabilities.setCapability("app", "/Users/a.marisova/Documents/Space.2020.8.34.apk");
+            capabilities.setCapability("appium:automationName", "uiautomator2");
+            capabilities.setCapability("appium:deviceName", "Test");
+            capabilities.setCapability("appium:appPackage", "com.jetbrains.space");
+            capabilities.setCapability("appium:app", "/Users/a.marisova/Documents/Space.2020.8.34.apk");
 
             capabilities.setCapability(MobileCapabilityType.NO_RESET, "true");
             capabilities.setCapability(MobileCapabilityType.FULL_RESET, "false");
